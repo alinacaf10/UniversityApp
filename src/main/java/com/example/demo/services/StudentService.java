@@ -5,6 +5,7 @@ import com.example.demo.repository.StudentRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class StudentService {
@@ -33,4 +34,18 @@ public class StudentService {
     }
 
 
+    public String updateStudent(int id, Student student) {
+        Optional<Student> exStudent=studentRepository.findById(id);
+        if (exStudent.isPresent()){
+            Student updated=exStudent.get();
+            updated.setName(student.getName());
+            updated.setAge(student.getAge());
+
+            studentRepository.save(updated);
+            return "Student successfully updated";
+        }
+        else {
+            return "Student with id:"+id+" is not find";
+        }
+    }
 }

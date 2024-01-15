@@ -32,4 +32,9 @@ public class StudentController {
     public ResponseEntity<String> deleteStudent(@PathVariable(name = "id") int id) {
         return new ResponseEntity<>(studentService.deleteStudent(id), HttpStatus.OK);
     }
+
+    @PutMapping("/update/{id}")
+    public ResponseEntity<String> updateStudent(@PathVariable(name = "id") int id, @RequestBody Student student) {
+        return new ResponseEntity<>(studentService.updateStudent(id, student), HttpStatus.OK);
+    }
 }
