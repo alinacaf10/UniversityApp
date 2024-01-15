@@ -24,5 +24,13 @@ public class StudentService {
         return "Student successfully added";
     }
 
+    public String deleteStudent(int id) {
+        if (studentRepository.findById(id).isEmpty()) {
+            return "Student doesn't find with id:" + id;
+        }
+        studentRepository.deleteById(id);
+        return "Student with id:" + id + " successfully deleted";
+    }
+
 
 }
