@@ -3,7 +3,6 @@ package com.example.demo.model;
 import jakarta.persistence.*;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-
 @Entity
 @Table(name = "teacher")
 @Data
@@ -16,6 +15,5 @@ public class Teacher {
     private String name;
 
     private int experience;
-
 
 }
