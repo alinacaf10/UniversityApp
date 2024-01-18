@@ -1,5 +1,6 @@
 package com.example.demo.controllers;
 
+import com.example.demo.model.Student;
 import com.example.demo.model.Teacher;
 import com.example.demo.services.TeacherService;
 import org.springframework.http.HttpStatus;
@@ -36,5 +37,10 @@ public class TeacherController {
     @PutMapping("/update/{id}")
     public ResponseEntity<String> updateTeacher(@PathVariable int id, @RequestBody Teacher teacher) {
         return new ResponseEntity<>(teacherService.updateTeacher(id, teacher), HttpStatus.OK);
+    }
+
+    @GetMapping("/getStudents/{id}")
+    public ResponseEntity<List<Student>> getStudentsOfTeacher(@PathVariable int id) {
+        return new ResponseEntity<>(teacherService.getStudentsOfTeacher(id), HttpStatus.OK);
     }
 }

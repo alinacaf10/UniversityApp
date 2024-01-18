@@ -1,5 +1,6 @@
 package com.example.demo.services;
 
+import com.example.demo.model.Student;
 import com.example.demo.model.Teacher;
 import com.example.demo.repository.TeacherRepository;
 import org.springframework.stereotype.Service;
@@ -47,5 +48,10 @@ public class TeacherService {
         } else {
             return "Teacher with id:" + id + " is not find";
         }
+    }
+
+    public List<Student> getStudentsOfTeacher(int id) {
+//        Optional<Teacher> existsTeacher = teacherRepository.findById(id);
+        return teacherRepository.getStudentsOfTeacher(id);
     }
 }
