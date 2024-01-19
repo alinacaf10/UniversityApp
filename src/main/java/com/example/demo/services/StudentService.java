@@ -43,8 +43,7 @@ public class StudentService {
 
             studentRepository.save(updated);
             return "Student successfully updated";
-        } else {
-            return "Student with id:" + id + " is not find";
         }
+            return "Student with id:" + id + " is not find";
     }
 }

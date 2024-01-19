@@ -21,4 +21,5 @@ public class Student {
     @JoinColumn(name = "teacher_id", referencedColumnName = "id")
     private Teacher teacher;
 
+
 }

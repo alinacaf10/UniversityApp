@@ -17,4 +17,9 @@ public class Teacher {
 
     private int experience;
 
+    public Teacher(int id, String name, int experience) {
+        this.id = id;
+        this.name = name;
+        this.experience = experience;
+    }
 }
