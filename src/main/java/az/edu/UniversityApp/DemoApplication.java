@@ -1,4 +1,4 @@
-package com.example.demo;
+package az.edu.UniversityApp;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

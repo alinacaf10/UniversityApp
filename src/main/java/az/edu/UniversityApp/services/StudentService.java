@@ -1,7 +1,7 @@
-package com.example.demo.services;
+package az.edu.UniversityApp.services;
 
-import com.example.demo.model.Student;
-import com.example.demo.repository.StudentRepository;
+import az.edu.UniversityApp.model.Student;
+import az.edu.UniversityApp.repository.StudentRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;

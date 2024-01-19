@@ -1,6 +1,6 @@
-package com.example.demo.repository;
+package az.edu.UniversityApp.repository;
 
-import com.example.demo.model.Student;
+import az.edu.UniversityApp.model.Student;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 import java.util.*;

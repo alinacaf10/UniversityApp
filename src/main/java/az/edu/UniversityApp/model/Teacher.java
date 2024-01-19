@@ -1,4 +1,4 @@
-package com.example.demo.model;
+package az.edu.UniversityApp.model;
 
 import jakarta.persistence.*;
 import lombok.Data;

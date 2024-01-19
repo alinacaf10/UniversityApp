@@ -1,4 +1,4 @@
-package com.example.demo.security;
+package az.edu.UniversityApp.security;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
