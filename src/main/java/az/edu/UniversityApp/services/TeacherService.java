@@ -69,6 +69,7 @@ public class TeacherService {
     }
 
     public Teacher getTeacherById(int id) {
+        teacherRepository.findById(id).orElseThrow(() -> new RuntimeException("Teacher not found with id: " + id));
         return teacherRepository.getTeacherById(id);
     }
 }
