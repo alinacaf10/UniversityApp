@@ -1,6 +1,7 @@
 package az.edu.UniversityApp.controllers;
 
 import az.edu.UniversityApp.model.Student;
+import az.edu.UniversityApp.model.Teacher;
 import az.edu.UniversityApp.services.StudentService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -41,5 +42,9 @@ public class StudentController {
     @GetMapping("/{id}")
     public ResponseEntity<Student> getStudentById(@PathVariable int id) {
         return new ResponseEntity<>(studentService.getById(id), HttpStatus.OK);
+    }
+    @PostMapping("/{id}/changeTeacher")
+    public ResponseEntity<String> changeTeacherOfStudent(@PathVariable int id, @RequestBody Teacher teacher){
+        return new ResponseEntity<>(studentService.changeTeacher(id,teacher),HttpStatus.OK);
     }
 }

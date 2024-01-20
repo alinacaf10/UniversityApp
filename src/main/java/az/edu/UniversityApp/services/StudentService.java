@@ -1,7 +1,9 @@
 package az.edu.UniversityApp.services;
 
 import az.edu.UniversityApp.model.Student;
+import az.edu.UniversityApp.model.Teacher;
 import az.edu.UniversityApp.repository.StudentRepository;
+import az.edu.UniversityApp.repository.TeacherRepository;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -12,9 +14,12 @@ import java.util.Optional;
 public class StudentService {
 
     private final StudentRepository studentRepository;
+    private final TeacherRepository teacherRepository;
 
-    public StudentService(StudentRepository studentRepository) {
+    public StudentService(StudentRepository studentRepository,
+                          TeacherRepository teacherRepository) {
         this.studentRepository = studentRepository;
+        this.teacherRepository=teacherRepository;
     }
 
     public List<Student> getAllStudents() {
@@ -41,7 +46,6 @@ public class StudentService {
             Student updated = exStudent.get();
             updated.setName(student.getName());
             updated.setAge(student.getAge());
-
             studentRepository.save(updated);
             return "Student successfully updated";
         }
@@ -51,5 +55,17 @@ public class StudentService {
     public Student getById(int id) {
         studentRepository.findById(id).orElseThrow(() -> new RuntimeException("Student not found with id: " + id));
         return studentRepository.findStudentById(id);
+    }
+
+    @Transactional
+    public String changeTeacher(int id, Teacher teacher) {
+        Optional<Student> student=studentRepository.findById(id);
+        if (student.isPresent()){
+            student.get().setTeacher(teacher);
+            teacherRepository.save(teacher);
+            studentRepository.save(student.get());
+            return "Student with id:"+id+" change teacher";
+        }
+        return "Student with id:"+id+" is not found";
     }
 }
