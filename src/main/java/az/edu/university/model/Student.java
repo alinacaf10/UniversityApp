@@ -1,4 +1,4 @@
-package az.edu.UniversityApp.model;
+package az.edu.university.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;

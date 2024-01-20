@@ -1,8 +1,8 @@
-package az.edu.UniversityApp.controllers;
+package az.edu.university.controllers;
 
-import az.edu.UniversityApp.model.Student;
-import az.edu.UniversityApp.model.Teacher;
-import az.edu.UniversityApp.services.TeacherService;
+import az.edu.university.model.Student;
+import az.edu.university.model.Teacher;
+import az.edu.university.services.TeacherService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;

@@ -1,4 +1,4 @@
-package az.edu.UniversityApp.model;
+package az.edu.university.model;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;

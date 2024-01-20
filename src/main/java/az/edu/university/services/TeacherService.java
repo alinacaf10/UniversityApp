@@ -1,9 +1,9 @@
-package az.edu.UniversityApp.services;
+package az.edu.university.services;
 
-import az.edu.UniversityApp.model.Student;
-import az.edu.UniversityApp.model.Teacher;
-import az.edu.UniversityApp.repository.StudentRepository;
-import az.edu.UniversityApp.repository.TeacherRepository;
+import az.edu.university.model.Student;
+import az.edu.university.model.Teacher;
+import az.edu.university.repository.StudentRepository;
+import az.edu.university.repository.TeacherRepository;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 

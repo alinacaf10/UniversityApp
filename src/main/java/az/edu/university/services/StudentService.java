@@ -1,9 +1,9 @@
-package az.edu.UniversityApp.services;
+package az.edu.university.services;
 
-import az.edu.UniversityApp.model.Student;
-import az.edu.UniversityApp.model.Teacher;
-import az.edu.UniversityApp.repository.StudentRepository;
-import az.edu.UniversityApp.repository.TeacherRepository;
+import az.edu.university.model.Student;
+import az.edu.university.model.Teacher;
+import az.edu.university.repository.StudentRepository;
+import az.edu.university.repository.TeacherRepository;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -58,14 +58,16 @@ public class StudentService {
     }
 
     @Transactional
-    public String changeTeacher(int id, Teacher teacher) {
-        Optional<Student> student=studentRepository.findById(id);
-        if (student.isPresent()){
-            student.get().setTeacher(teacher);
-            teacherRepository.save(teacher);
+    public String changeTeacher(int studentId, int teacherId) {
+        Optional<Student> student = studentRepository.findById(studentId);
+        Optional<Teacher> teacher = teacherRepository.findById(teacherId);
+
+        if (student.isPresent() && teacher.isPresent()) {
+            student.get().setTeacher(teacher.get());
             studentRepository.save(student.get());
-            return "Student with id:"+id+" change teacher";
+            return "Student with id:" + studentId + " change teacher";
         }
-        return "Student with id:"+id+" is not found";
+
+        return "Student or Teacher is not found";
     }
 }

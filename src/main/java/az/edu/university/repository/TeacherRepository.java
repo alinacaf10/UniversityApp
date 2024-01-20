@@ -1,8 +1,7 @@
-package az.edu.UniversityApp.repository;
+package az.edu.university.repository;
 
-import az.edu.UniversityApp.model.Teacher;
+import az.edu.university.model.Teacher;
 import org.springframework.data.jpa.repository.JpaRepository;
-
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
