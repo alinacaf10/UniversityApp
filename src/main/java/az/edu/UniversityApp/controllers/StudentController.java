@@ -1,7 +1,7 @@
 package az.edu.UniversityApp.controllers;
 
-import az.edu.UniversityApp.services.StudentService;
 import az.edu.UniversityApp.model.Student;
+import az.edu.UniversityApp.services.StudentService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -36,5 +36,10 @@ public class StudentController {
     @PutMapping("/update/{id}")
     public ResponseEntity<String> updateStudent(@PathVariable(name = "id") int id, @RequestBody Student student) {
         return new ResponseEntity<>(studentService.updateStudent(id, student), HttpStatus.OK);
+    }
+
+    @GetMapping("/{id}")
+    public ResponseEntity<Student> getStudentById(@PathVariable int id) {
+        return new ResponseEntity<>(studentService.getById(id), HttpStatus.OK);
     }
 }

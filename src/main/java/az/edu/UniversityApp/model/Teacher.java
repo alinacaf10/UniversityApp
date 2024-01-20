@@ -1,15 +1,18 @@
 package az.edu.UniversityApp.model;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import java.util.*;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name = "teacher")
 @Data
 @NoArgsConstructor
+@AllArgsConstructor
 public class Teacher {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -20,19 +23,13 @@ public class Teacher {
     private int experience;
 
     private String department;
-    @JsonIgnore
+    //    @JsonIgnore
     @OneToMany(mappedBy = "teacher")
     private List<Student> students = new ArrayList<>();
 
-    public Teacher(int id, String name, int experience,String department) {
-        this.id = id;
-        this.name = name;
-        this.experience = experience;
-        this.department=department;
-    }
 
     public void addStudent(Student student) {
-        students.add(student);
+        this.students.add(student);
         student.setTeacher(this);
     }
 }

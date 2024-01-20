@@ -47,4 +47,8 @@ public class StudentService {
         }
             return "Student with id:" + id + " is not find";
     }
+
+    public Student getById(int id) {
+        return studentRepository.findStudentById(id);
+    }
 }

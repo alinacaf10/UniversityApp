@@ -1,5 +1,6 @@
 package az.edu.UniversityApp.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -16,7 +17,7 @@ public class Student {
     private String name;
 
     private int age;
-
+    @JsonIgnore
     @ManyToOne
     @JoinColumn(name = "teacher_id", referencedColumnName = "id")
     private Teacher teacher;

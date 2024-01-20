@@ -2,8 +2,8 @@ package az.edu.UniversityApp.services;
 
 import az.edu.UniversityApp.model.Student;
 import az.edu.UniversityApp.model.Teacher;
-import az.edu.UniversityApp.repository.TeacherRepository;
 import az.edu.UniversityApp.repository.StudentRepository;
+import az.edu.UniversityApp.repository.TeacherRepository;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -62,9 +62,10 @@ public class TeacherService {
     public String addStudentToTeacher(int teacherId, Student student) {
         Teacher teacher = teacherRepository.findById(teacherId).orElseThrow(() -> new RuntimeException("Teacher not found with id: " + teacherId));
         teacher.addStudent(student);
+        studentRepository.save(student);
         teacherRepository.save(teacher);
 
-        return "Student with id:"+student.getId()+ " successfully added";
+        return "Student successfully added";
     }
 
     public Teacher getTeacherById(int id) {
