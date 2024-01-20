@@ -3,6 +3,7 @@ package az.edu.UniversityApp.services;
 import az.edu.UniversityApp.model.Student;
 import az.edu.UniversityApp.repository.StudentRepository;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.Optional;
@@ -33,7 +34,7 @@ public class StudentService {
         return "Student with id:" + id + " successfully deleted";
     }
 
-
+    @Transactional
     public String updateStudent(int id, Student student) {
         Optional<Student> exStudent = studentRepository.findById(id);
         if (exStudent.isPresent()) {

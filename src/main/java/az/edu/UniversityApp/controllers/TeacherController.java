@@ -34,13 +34,26 @@ public class TeacherController {
         return new ResponseEntity<>(teacherService.deleteTeacher(id), HttpStatus.OK);
     }
 
-    @PutMapping("/update/{id}")
+    @PutMapping("/{id}/update")
     public ResponseEntity<String> updateTeacher(@PathVariable int id, @RequestBody Teacher teacher) {
         return new ResponseEntity<>(teacherService.updateTeacher(id, teacher), HttpStatus.OK);
     }
 
-    @GetMapping("/getStudents/{id}")
+    @GetMapping("/{id}/getStudents")
     public ResponseEntity<List<Student>> getStudentsOfTeacher(@PathVariable int id) {
         return new ResponseEntity<>(teacherService.getStudentsOfTeacher(id), HttpStatus.OK);
     }
+    @GetMapping("/getByDepartment/{department}")
+    public ResponseEntity<List<Teacher>> getTeachersByDepartment(@PathVariable String department){
+        return new ResponseEntity<>(teacherService.getTeachersByDepartment(department),HttpStatus.OK);
+    }
+    @PostMapping("/{id}/addStudent")
+    public ResponseEntity<String> addStudentToTeacher(@PathVariable int id,@RequestBody Student student){
+        return new ResponseEntity<>(teacherService.addStudentToTeacher(id,student),HttpStatus.CREATED);
+    }
+    @GetMapping("/{id}")
+    public ResponseEntity<Teacher> getTeacherById(@PathVariable int id){
+        return new ResponseEntity<>(teacherService.getTeacherById(id),HttpStatus.OK);
+    }
+
 }

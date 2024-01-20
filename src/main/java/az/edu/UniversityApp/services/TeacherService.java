@@ -5,6 +5,7 @@ import az.edu.UniversityApp.model.Teacher;
 import az.edu.UniversityApp.repository.TeacherRepository;
 import az.edu.UniversityApp.repository.StudentRepository;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.Optional;
@@ -36,7 +37,7 @@ public class TeacherService {
         }
             return "Teacher with id:" + id + " does not exists";
     }
-
+    @Transactional
     public String updateTeacher(int id, Teacher teacher) {
         Optional<Teacher> existsTeacher = teacherRepository.findById(id);
         if (existsTeacher.isPresent()) {
@@ -52,5 +53,21 @@ public class TeacherService {
 
     public List<Student> getStudentsOfTeacher(int id) {
         return studentRepository.findAllByTeacherId(id);
+    }
+
+    public List<Teacher> getTeachersByDepartment(String department) {
+        return teacherRepository.findAllByDepartment(department);
+    }
+
+    public String addStudentToTeacher(int teacherId, Student student) {
+        Teacher teacher = teacherRepository.findById(teacherId).orElseThrow(() -> new RuntimeException("Teacher not found with id: " + teacherId));
+        teacher.addStudent(student);
+        teacherRepository.save(teacher);
+
+        return "Student with id:"+student.getId()+ " successfully added";
+    }
+
+    public Teacher getTeacherById(int id) {
+        return teacherRepository.getTeacherById(id);
     }
 }
