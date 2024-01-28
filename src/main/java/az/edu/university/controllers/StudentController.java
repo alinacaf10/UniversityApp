@@ -39,7 +39,7 @@ public class StudentController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Student> getStudentById(@PathVariable int id) {
+    public ResponseEntity<Student> getById(@PathVariable int id) {
         return new ResponseEntity<>(studentService.getById(id), HttpStatus.OK);
     }
 

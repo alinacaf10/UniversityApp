@@ -61,15 +61,15 @@ public class TeacherService {
 
     public String addStudentToTeacher(int teacherId, Student student) {
         Teacher teacher = teacherRepository.findById(teacherId).orElseThrow(() -> new RuntimeException("Teacher not found with id: " + teacherId));
-        teacher.addStudent(student);
-        studentRepository.save(student);
+        Student studentOpt = studentRepository.getById(student.getId());
+        teacher.addStudent(studentOpt);
         teacherRepository.save(teacher);
 
         return "Student successfully added";
     }
 
-    public Teacher getTeacherById(int id) {
+    public Teacher getById(int id) {
         teacherRepository.findById(id).orElseThrow(() -> new RuntimeException("Teacher not found with id: " + id));
-        return teacherRepository.getTeacherById(id);
+        return teacherRepository.getById(id);
     }
 }

@@ -10,5 +10,4 @@ import java.util.List;
 public interface StudentRepository extends JpaRepository<Student, Integer> {
     List<Student> findAllByTeacherId(int id);
 
-    Student findStudentById(int id);
 }

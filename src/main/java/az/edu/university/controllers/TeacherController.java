@@ -47,13 +47,13 @@ public class TeacherController {
     public ResponseEntity<List<Teacher>> getTeachersByDepartment(@PathVariable String department){
         return new ResponseEntity<>(teacherService.getTeachersByDepartment(department),HttpStatus.OK);
     }
-    @PostMapping("/{id}/addStudent")
-    public ResponseEntity<String> addStudentToTeacher(@PathVariable int id,@RequestBody Student student){
-        return new ResponseEntity<>(teacherService.addStudentToTeacher(id,student),HttpStatus.CREATED);
+    @PostMapping("/{teacherId}/addStudent")
+    public ResponseEntity<String> addStudentToTeacher(@PathVariable int teacherId,@RequestBody Student studentId){
+        return new ResponseEntity<>(teacherService.addStudentToTeacher(teacherId,studentId),HttpStatus.CREATED);
     }
     @GetMapping("/{id}")
     public ResponseEntity<Teacher> getTeacherById(@PathVariable int id){
-        return new ResponseEntity<>(teacherService.getTeacherById(id),HttpStatus.OK);
+        return new ResponseEntity<>(teacherService.getById(id),HttpStatus.OK);
     }
 
 
