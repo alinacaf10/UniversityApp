@@ -27,6 +27,9 @@ public class Teacher {
     @OneToMany(mappedBy = "teacher")
     private List<Student> students = new ArrayList<>();
 
+    public Teacher(int id) {
+        this.id = id;
+    }
 
     public void addStudent(Student student) {
         this.students.add(student);
