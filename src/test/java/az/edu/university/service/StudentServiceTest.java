@@ -31,7 +31,7 @@ public class StudentServiceTest {
     @Before
     public void before(){
         System.out.println("before test");
-        MockitoAnnotations.initMocks(this);
+        MockitoAnnotations.openMocks(this);
         List<Student> list=new ArrayList<>();
 
         Student student=new Student();
@@ -41,22 +41,23 @@ public class StudentServiceTest {
 
         list.add(student);
         Mockito.when(studentRepository.findAll()).thenReturn(list);
+        Mockito.when(studentRepository.findById(3)).thenReturn(Optional.of(student));
     }
 
     @Test
     public void testGetAllStudent(){
         List<Student> list=studentService.getAllStudents();
-        Assert.assertTrue("user size must be greater than 0",list.size()>0);
+        Assert.assertFalse("user size must be greater than 0", list.isEmpty());
         Mockito.verify(studentRepository,Mockito.atLeastOnce())
                 .findAll();
     }
 
     @Test
     public void testGetById(){
-        Student student=studentService.getById(0);
+        Student student=studentService.getById(3);
         Assert.assertNull("student must be null",student);
         Mockito.verify(studentRepository,Mockito.atLeastOnce())
-                .findById(0);
+                .findById(3);
     }
 
 }

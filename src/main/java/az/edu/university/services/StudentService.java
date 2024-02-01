@@ -52,7 +52,7 @@ public class StudentService {
             return "Student with id:" + id + " is not find";
     }
 
-    public Student getById(int id) {
+    public Student getById(Integer id) {
         studentRepository.findById(id).orElseThrow(() -> new RuntimeException("Student not found with id: " + id));
         return studentRepository.getById(id);
     }
