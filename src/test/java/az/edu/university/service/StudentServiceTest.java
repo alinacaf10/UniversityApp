@@ -51,4 +51,12 @@ public class StudentServiceTest {
                 .findAll();
     }
 
+    @Test
+    public void testGetById(){
+        Student student=studentService.getById(0);
+        Assert.assertNull("student must be null",student);
+        Mockito.verify(studentRepository,Mockito.atLeastOnce())
+                .findById(0);
+    }
+
 }
